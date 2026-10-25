@@ -139,10 +139,139 @@ function sharePage(){
 }
 </script>
 </body>
-</html><button
-  type="button"
-  onclick="window.location.href='https://t.me/YOUR_TELEGRAM_USERNAME'"
-  style="background-color: green; color: white; width: 100%; padding: 16px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer;"
->
-  📩 Submit Payment Details
+<!DOCTYPE html>
+<html lang="am">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EthioHub Premium</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Roboto, Arial, sans-serif; background: #f1f3f9; color: #1c1c28; }
+  header { background: #fff; padding: 18px 24px; box-shadow: 0 2px 6px rgba(0,0,0,.06); }
+  header h1 { margin: 0; font-size: 34px; color: #1a73e8; }
+  .wrap { padding: 20px; }
+  .card { background: #fff; border-radius: 28px; padding: 24px; margin-bottom: 24px; }
+  .card h2 { margin: 0 0 12px; font-size: 28px; }
+  .card p { font-size: 20px; margin: 0 0 20px; }
+  .method { background: #f3f6ff; border-radius: 28px; padding: 24px; margin-bottom: 20px; }
+  .method h3 { margin: 0 0 16px; font-size: 26px; }
+  .method .acc { font-size: 22px; margin-bottom: 16px; }
+  .copy { background: #e4edff; color: #1a73e8; border: 0; border-radius: 16px; padding: 14px 20px; font-size: 19px; font-weight: bold; cursor: pointer; }
+  label { display: block; font-size: 22px; margin: 18px 0 8px; }
+  input { width: 100%; padding: 18px; font-size: 20px; border: 1px solid #777; border-radius: 6px; }
+  .submit { display: block; width: 100%; margin-top: 24px; padding: 18px; font-size: 21px; font-weight: bold; color: #fff; background: #1faa4b; border: 0; border-radius: 40px; cursor: pointer; }
+  .back { display: inline-block; margin-top: 20px; padding: 16px 24px; background: #e4edff; color: #1a73e8; border-radius: 16px; font-size: 20px; font-weight: bold; text-decoration: none; }
+  .paid { background: #e6eefc; border-radius: 28px; padding: 24px; }
+  .paid h2 { margin: 0 0 12px; font-size: 28px; }
+
+  /* Plans */
+  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+  .plan { background: #f3f6ff; border-radius: 22px; padding: 18px; text-align: center; }
+  .plan .dur { font-size: 20px; font-weight: bold; }
+  .plan .price { font-size: 26px; color: #1a73e8; font-weight: bold; margin: 8px 0 14px; }
+  .plan a { display: block; padding: 12px; background: #1a73e8; color: #fff; border-radius: 30px; text-decoration: none; font-size: 18px; font-weight: bold; }
+</style>
+</head>
+<body>
+<header><h1>🌍 EthioHub</h1></header>
+
+<div class="wrap">
+  <div class="card">
+    <h2>👑 Unlock EthioHub Premium</h2>
+    <p>Pay using one of the methods below, then submit your receipt for verification.</p>
+
+    <!-- Plans -->
+    <div class="plans">
+      <div class="plan">
+        <div class="dur">1 ሳምንት</div>
+        <div class="price">200 ብር</div>
+        <a href="#" data-plan="1 ሳምንት - 200 ብር" class="pay">ይክፈሉ</a>
+      </div>
+      <div class="plan">
+        <div class="dur">2 ሳምንት</div>
+        <div class="price">400 ብር</div>
+        <a href="#" data-plan="2 ሳምንት - 400 ብር" class="pay">ይክፈሉ</a>
+      </div>
+      <div class="plan">
+        <div class="dur">3 ሳምንት</div>
+        <div class="price">600 ብር</div>
+        <a href="#" data-plan="3 ሳምንት - 600 ብር" class="pay">ይክፈሉ</a>
+      </div>
+      <div class="plan">
+        <div class="dur">1 ወር</div>
+        <div class="price">800 ብር</div>
+        <a href="#" data-plan="1 ወር - 800 ብር" class="pay">ይክፈሉ</a>
+      </div>
+    </div>
+
+    <div class="method">
+      <h3>📱 Telebirr</h3>
+      <div class="acc">Account: <b>0927487505</b></div>
+      <button class="copy" onclick="copyText('0927487505')">📋 Copy Number</button>
+    </div>
+
+    <div class="method">
+      <h3>🏦 Wegagen Bank</h3>
+      <div class="acc">Account: <b>1157193230101</b></div>
+      <button class="copy" onclick="copyText('1157193230101')">📋 Copy Account</button>
+    </div>
+
+    <label>Payment reference / transaction ID</label>
+    <input id="txn1" type="text" placeholder="Enter transaction ID">
+
+    <label>Your name</label>
+    <input id="name1" type="text" placeholder="Enter your name">
+
+    <button class="submit" onclick="sendToTelegram('name1','txn1')">📩 Submit Payment Details</button>
+
+    <a class="back" href="javascript:history.back()">← Back to Videos</a>
+  </div>
+
+  <div class="paid">
+    <h2>✅ Already Paid?</h2>
+    <p style="font-size:20px;">ክፍያ ከፍለዋል? የክፍያ ዝርዝርዎን ይላኩልን።</p>
+
+    <label>Your Name</label>
+    <input id="name2" type="text" placeholder="Enter your name">
+
+    <label>Transaction ID</label>
+    <input id="txn2" type="text" placeholder="Enter payment reference">
+
+    <button class="submit" onclick="sendToTelegram('name2','txn2')">📩 Submit Payment Details</button>
+  </div>
+</div>
+
+<script>
+  var TG_USER = 'Cj_Fresh281';
+
+  function openTelegram(msg) {
+    window.location.href = 'https://t.me/' + TG_USER + '?text=' + encodeURIComponent(msg);
+  }
+
+  function sendToTelegram(nameId, txnId) {
+    var name = document.getElementById(nameId).value.trim();
+    var txn = document.getElementById(txnId).value.trim();
+    var msg = 'ሰላም, ክፍያ ከፍያለሁ።\nስም: ' + name + '\nTransaction ID: ' + txn;
+    openTelegram(msg);
+  }
+
+  document.querySelectorAll('.pay').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      openTelegram('ሰላም, የ ' + a.getAttribute('data-plan') + ' Premium መክፈል እፈልጋለሁ።');
+    });
+  });
+
+  function copyText(t) {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(t).then(function () { alert('Copied: ' + t); });
+    } else {
+      var i = document.createElement('input'); i.value = t; document.body.appendChild(i);
+      i.select(); document.execCommand('copy'); document.body.removeChild(i); alert('Copied: ' + t);
+    }
+  }
+</script>
+</body>
+</html>
 </button>
