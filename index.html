@@ -227,4 +227,51 @@ function sharePage(){
 
     <a class="back" href="javascript:history.back()">← Back to Videos</a>
   </div>
+  <div class="paid">
+    <h2>✅ Already Paid?</h2>
+    <p style="font-size:20px;">ክፍያ ከፍለዋል? የክፍያ ዝርዝርዎን ይላኩልን።</p>
+
+    <label>Your Name</label>
+    <input id="name2" type="text" placeholder="Enter your name">
+
+    <label>Transaction ID</label>
+    <input id="txn2" type="text" placeholder="Enter payment reference">
+
+    <button class="submit" onclick="sendToTelegram('name2','txn2')">📩 Submit Payment Details</button>
+  </div>
+</div>
+
+<script>
+  var TG_USER = 'Cj_Fresh281';
+
+  function openTelegram(msg) {
+    window.location.href = 'https://t.me/' + TG_USER + '?text=' + encodeURIComponent(msg);
+  }
+
+  function sendToTelegram(nameId, txnId) {
+    var name = document.getElementById(nameId).value.trim();
+    var txn = document.getElementById(txnId).value.trim();
+    var msg = 'ሰላም, ክፍያ ከፍያለሁ።\nስም: ' + name + '\nTransaction ID: ' + txn;
+    openTelegram(msg);
+  }
+
+  document.querySelectorAll('.pay').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      openTelegram('ሰላም, የ ' + a.getAttribute('data-plan') + ' Premium መክፈል እፈልጋለሁ።');
+    });
+  });
+
+  function copyText(t) {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(t).then(function () { alert('Copied: ' + t); });
+    } else {
+      var i = document.createElement('input'); i.value = t; document.body.appendChild(i);
+      i.select(); document.execCommand('copy'); document.body.removeChild(i); alert('Copied: ' + t);
+    }
+  }
+</script>
+</body>
+</html>
+</button>
 
